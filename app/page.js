@@ -31,7 +31,6 @@ export default function Home() {
     checkFor: "",
     question: "",
   });
-  const [state, setState] = useState("");
 
   function questionChecker(alienProp, checkFor) {
     if (alienProp === checkFor) {
@@ -48,10 +47,8 @@ export default function Home() {
   }
 
   function updateQuestion(value) {
-    setQuestionAsked((curr) => {
-      const newObject = JSON.parse(value);
-      return newObject;
-    });
+    const newObject = JSON.parse(value);
+    setQuestionAsked(newObject);
   }
 
   return (
@@ -60,7 +57,7 @@ export default function Home() {
         <select
           id="question"
           name="question"
-          value={questionAsked.question}
+          value=""
           onChange={(e) => {
             updateQuestion(e.target.value);
           }}
