@@ -45,23 +45,23 @@ export default function Home() {
     // const checkFor = JSON.parse(questionAsked).checkFor;
     questionChecker(chosenAlien.colour, questionAsked.checkFor);
   }
-  console.log(questionAsked);
   return (
     <main>
       <form onSubmit={(e) => handleSubmit(e)}>
         <select
           id="question"
           name="question"
-          value={questionAsked.question}
           onChange={(e) => {
-            setQuestionAsked((curr) => {
-              return { checkFor: e.target.value };
-            });
+            const parsed = JSON.parse(e.target.value);
+            console.log(parsed);
+            questionAsked.checkFor = parsed.checkFor;
+            questionAsked.question = parsed.question;
+            setQuestionAsked({ ...questionAsked });
           }}
         >
           {colourQuestion.map((q) => {
             return (
-              <option key={q.checkFor} value={q.checkFor}>
+              <option key={q.checkFor} value={JSON.stringify(q)}>
                 {q.question}
               </option>
             );
