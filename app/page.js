@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import generateQuestions from './utils/generateQuestions';
 
 const chosenAlien = {
   name: 'klargon',
@@ -61,6 +62,8 @@ export default function Home() {
     e.preventDefault();
     questionChecker(questionAsked.alienProp, questionAsked.checkFor);
   }
+
+
   return (
     <main>
       <form onSubmit={(e) => handleSubmit(e)}>
